@@ -134,7 +134,20 @@
       </div>
       <div class="mensagem" id="msg-5"></div>
     </section>
+
+    <section>
+        <h2>Contador 6</h2>
+        <p class="counter" data-id="6">0</p>
+        <div class="buttons">
+          <button onclick="alterar(6, 1)">+1</button>
+          <button onclick="alterar(6, -1)">-1</button>
+          <button onclick="resetar(6)">Zerar</button>
+        </div>
+        <div class="mensagem" id="msg-6"></div>
+      </section>
   </div>
+
+  
 
   <script>
     const contadores = {
@@ -142,7 +155,9 @@
       2: 0,
       3: 0,
       4: 0,
-      5: 0
+      5: 0,
+      6: 0
+
     };
 
     function alterar(id, valor) {
