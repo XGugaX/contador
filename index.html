@@ -1,114 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5 Contadores</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>5 Contadores Completos</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            text-align: center;
-            background-color: #79c94b;
-            font-family: sans-serif;
-            padding: 40px;
-        }
+    body {
+      text-align: center;
+      background-color: #79c94b;
+      font-family: sans-serif;
+      padding: 40px;
+    }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: auto;
-        }
+    h1 {
+      margin-bottom: 40px;
+    }
 
-        section {
-            border-radius: 20px;
-            padding: 20px;
-            background-color: #a6e26e;
-            font-size: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        button {
-            border: none;
-            font-size: 25px;
-            padding: 10px 20px;
-            border-radius: 10px;
-            background-color: #f8c8dc;
-            color: #264653;
-            cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
-        }
+    section {
+      border-radius: 20px;
+      padding: 20px;
+      background-color: #a6e26e;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-        button:active {
-            transform: scale(1.1);
-        }
+    h2 {
+      margin-bottom: 10px;
+    }
 
-        .counter {
-            font-size: 55px;
-            margin: 20px 0;
-            color: #264653;
-            transition: all 0.3s ease-in-out;
-        }
-    </style>
+    .counter {
+      font-size: 55px;
+      margin: 15px 0;
+      color: #264653;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      font-size: 20px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      background-color: #f8c8dc;
+      color: #264653;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    button:active {
+      transform: scale(1.1);
+    }
+
+    .mensagem {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>🌟 Meus 5 Contadores 🌟</h1>
-    <div class="container">
-        <section>
-            <h2>Contador 1</h2>
-            <p class="counter" data-id="1">0</p>
-            <button onclick="incrementar(1)">Botão</button>
-        </section>
-        <section>
-            <h2>Contador 2</h2>
-            <p class="counter" data-id="2">0</p>
-            <button onclick="incrementar(2)">Botão</button>
-        </section>
-        <section>
-            <h2>Contador 3</h2>
-            <p class="counter" data-id="3">0</p>
-            <button onclick="incrementar(3)">Botão</button>
-        </section>
-        <section>
-            <h2>Contador 4</h2>
-            <p class="counter" data-id="4">0</p>
-            <button onclick="incrementar(4)">Botão</button>
-        </section>
-        <section>
-            <h2>Contador 5</h2>
-            <p class="counter" data-id="5">0</p>
-            <button onclick="incrementar(5)">Botão</button>
-        </section>
-    </div>
+  <h1>✨ Contadores Super Poderosos ✨</h1>
+  <div class="container">
+    <!-- Criando 5 contadores -->
+    <section>
+      <h2>Contador 1</h2>
+      <p class="counter" data-id="1">0</p>
+      <div class="buttons">
+        <button onclick="alterar(1, 1)">+1</button>
+        <button onclick="alterar(1, -1)">-1</button>
+        <button onclick="resetar(1)">Zerar</button>
+      </div>
+      <div class="mensagem" id="msg-1"></div>
+    </section>
 
-    <script>
-        // objeto pra guardar os valores de cada contador
-        const contadores = {
-            1: 0,
-            2: 0,
-            3: 0,
-            4: 0,
-            5: 0
-        };
+    <section>
+      <h2>Contador 2</h2>
+      <p class="counter" data-id="2">0</p>
+      <div class="buttons">
+        <button onclick="alterar(2, 1)">+1</button>
+        <button onclick="alterar(2, -1)">-1</button>
+        <button onclick="resetar(2)">Zerar</button>
+      </div>
+      <div class="mensagem" id="msg-2"></div>
+    </section>
 
-        function incrementar(id) {
-            contadores[id]++;
-            const p = document.querySelector(`.counter[data-id="${id}"]`);
-            p.innerText = contadores[id];
+    <section>
+      <h2>Contador 3</h2>
+      <p class="counter" data-id="3">0</p>
+      <div class="buttons">
+        <button onclick="alterar(3, 1)">+1</button>
+        <button onclick="alterar(3, -1)">-1</button>
+        <button onclick="resetar(3)">Zerar</button>
+      </div>
+      <div class="mensagem" id="msg-3"></div>
+    </section>
 
-            // animação rápida ao atualizar
-            p.style.transform = "scale(1.2)";
-            setTimeout(() => {
-                p.style.transform = "scale(1)";
-            }, 150);
-        }
-    </script>
+    <section>
+      <h2>Contador 4</h2>
+      <p class="counter" data-id="4">0</p>
+      <div class="buttons">
+        <button onclick="alterar(4, 1)">+1</button>
+        <button onclick="alterar(4, -1)">-1</button>
+        <button onclick="resetar(4)">Zerar</button>
+      </div>
+      <div class="mensagem" id="msg-4"></div>
+    </section>
+
+    <section>
+      <h2>Contador 5</h2>
+      <p class="counter" data-id="5">0</p>
+      <div class="buttons">
+        <button onclick="alterar(5, 1)">+1</button>
+        <button onclick="alterar(5, -1)">-1</button>
+        <button onclick="resetar(5)">Zerar</button>
+      </div>
+      <div class="mensagem" id="msg-5"></div>
+    </section>
+  </div>
+
+  <script>
+    const contadores = {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0
+    };
+
+    function alterar(id, valor) {
+      contadores[id] += valor;
+      if (contadores[id] < 0) contadores[id] = 0; // Não deixa ir abaixo de 0
+
+      const el = document.querySelector(`.counter[data-id="${id}"]`);
+      el.innerText = contadores[id];
+
+      // Animação
+      el.style.transform = "scale(1.2)";
+      setTimeout(() => {
+        el.style.transform = "scale(1)";
+      }, 150);
+
+      // Verifica se chegou a 50
+      const msg = document.getElementById(`msg-${id}`);
+      if (contadores[id] === 50) {
+        msg.innerText = "🎉 Chegou a 50! Tá com o dedo nervoso, hein?!";
+      } else {
+        msg.innerText = "";
+      }
+    }
+
+    function resetar(id) {
+      contadores[id] = 0;
+      const el = document.querySelector(`.counter[data-id="${id}"]`);
+      el.innerText = 0;
+
+      // Resetar mensagem também
+      document.getElementById(`msg-${id}`).innerText = "";
+
+      el.style.transform = "scale(1.2)";
+      setTimeout(() => {
+        el.style.transform = "scale(1)";
+      }, 150);
+    }
+  </script>
 </body>
-
 </html>
