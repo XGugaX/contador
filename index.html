@@ -4,58 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>botao</title>
+    <title>5 Contadores</title>
     <style>
-        *{
+        * {
             box-sizing: border-box;
         }
-        body{
+
+        body {
             text-align: center;
-            margin: 250px;
             background-color: #79c94b;
+            font-family: sans-serif;
+            padding: 40px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        section {
+            border-radius: 20px;
+            padding: 20px;
+            background-color: #a6e26e;
+            font-size: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         button {
-            border: rgb(243, 238, 238);
-            font-size: 30px; 
-        }
-        section{
-            border-radius: 20px;
-            padding: 10px; 
-            background-color: #79c94b;
-            font-size: 30px; 
-        }
-        p{
-            font-size: 55px;
-        }
-        button:active{
-            transform: scale(1.1);
-        }
-        counter{
-            font-size: 60px;
-            margin-top: 30px
+            border: none;
+            font-size: 25px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: #f8c8dc;
             color: #264653;
-            transition:all 0.3 ease-in-out;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
         }
 
-        
+        button:active {
+            transform: scale(1.1);
+        }
+
+        .counter {
+            font-size: 55px;
+            margin: 20px 0;
+            color: #264653;
+            transition: all 0.3s ease-in-out;
+        }
     </style>
 </head>
 
 <body>
-    <section>
-    <h1>contador</h1>
-    <P>0</P>
-    <button onclick="contador()">botao</button>
-</section>
+    <h1>🌟 Meus 5 Contadores 🌟</h1>
+    <div class="container">
+        <section>
+            <h2>Contador 1</h2>
+            <p class="counter" data-id="1">0</p>
+            <button onclick="incrementar(1)">Botão</button>
+        </section>
+        <section>
+            <h2>Contador 2</h2>
+            <p class="counter" data-id="2">0</p>
+            <button onclick="incrementar(2)">Botão</button>
+        </section>
+        <section>
+            <h2>Contador 3</h2>
+            <p class="counter" data-id="3">0</p>
+            <button onclick="incrementar(3)">Botão</button>
+        </section>
+        <section>
+            <h2>Contador 4</h2>
+            <p class="counter" data-id="4">0</p>
+            <button onclick="incrementar(4)">Botão</button>
+        </section>
+        <section>
+            <h2>Contador 5</h2>
+            <p class="counter" data-id="5">0</p>
+            <button onclick="incrementar(5)">Botão</button>
+        </section>
+    </div>
+
     <script>
-        var n = 0
-        function contador() {
-            n++
-            document.querySelector("p").innerText = n
+        // objeto pra guardar os valores de cada contador
+        const contadores = {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0
+        };
+
+        function incrementar(id) {
+            contadores[id]++;
+            const p = document.querySelector(`.counter[data-id="${id}"]`);
+            p.innerText = contadores[id];
+
+            // animação rápida ao atualizar
+            p.style.transform = "scale(1.2)";
+            setTimeout(() => {
+                p.style.transform = "scale(1)";
+            }, 150);
         }
     </script>
-
 </body>
 
 </html>
